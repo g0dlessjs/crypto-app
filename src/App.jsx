@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
+import FormCrypto from "./components/Form";
 import ImgCrypto from "./img/imagen-criptos.png";
 
 const Container = styled.div`
@@ -46,7 +47,10 @@ function App() {
   return (
     <Container>
       <Imagen src={ImgCrypto} alt="img cryptocoins" />
-      <Heading>Cotiza Criptomonedas al Instante</Heading>
+      <div>
+        <Heading>Cotiza Criptomonedas al Instante</Heading>
+        <FormCrypto />
+      </div>
     </Container>
   );
 }
