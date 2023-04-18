@@ -24,11 +24,15 @@ const InputSubmit = styled.input`
 const FormCrypto = () => {
   const [cryptos, setCryptos] = useState([]);
   const [coin, SelectCoins] = useSelectCoins("Elige tu Moneda", coins);
+  const [cryptocoin, SelectCryptoCoin] = useSelectCoins(
+    "Elige tu Criptomoneda",
+    cryptos
+  );
 
   // Consulta a la API
   useEffect(() => {
     const consultAPI = async () => {
-      const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD`;
+      const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD`;
       const response = await fetch(url);
       const result = await response.json();
 
@@ -47,7 +51,7 @@ const FormCrypto = () => {
   return (
     <form>
       <SelectCoins />
-      {coin}
+      <SelectCryptoCoin />
       <InputSubmit type="submit" value="Cotizar" />
     </form>
   );
