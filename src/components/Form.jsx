@@ -26,6 +26,8 @@ const FormCrypto = () => {
   return (
     <form>
       <SelectCoins />
+      <SelectCoins />
+
       <InputSubmit type="submit" value="Cotizar" />
     </form>
   );
