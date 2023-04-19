@@ -1,31 +1,62 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const P = styled.p`
+const Container = styled.div`
   color: #fff;
+  font-family: "Lato", sans-serif;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 30px;
 `;
+
+const Imagen = styled.img`
+  display: block;
+  width: 120px;
+`;
+
+const Text = styled.p`
+  font-size: 18px;
+  span {
+    font-weight: 700;
+  }
+`;
+
+const Price = styled.p`
+  font-size: 24px;
+  span {
+    font-weight: 700;
+  }
+`;
+
 const Result = ({ result }) => {
   const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, IMAGEURL, LASTUPDATE } =
     result;
-  console.log(result);
   return (
-    <div>
-      <P>
-        El Precio es de <span>{PRICE}</span>{" "}
-      </P>
-      <P>
-        El Precio más alto del día: <span>{HIGHDAY}</span>{" "}
-      </P>
-      <P>
-        El Precio más bajo del día: <span>{LOWDAY}</span>{" "}
-      </P>
-      <P>
-        Variación últimas 24hrs:<span>{CHANGEPCT24HOUR}</span>{" "}
-      </P>
-      <P>
-        Última Actualización: <span>{LASTUPDATE}</span>{" "}
-      </P>
-    </div>
+    <Container>
+      <Imagen
+        src={`https://cryptocompare.com/${IMAGEURL}`}
+        alt="imagen cripto"
+      />
+      <div>
+        <Price>
+          El Precio es de: <span>{PRICE}</span>{" "}
+        </Price>
+        <Text>
+          El Precio más alto del día: <span>{HIGHDAY}</span>{" "}
+        </Text>
+        <Text>
+          El Precio más bajo del día: <span>{LOWDAY}</span>{" "}
+        </Text>
+        <Text>
+          Variación últimas 24hrs:<span>{CHANGEPCT24HOUR}</span>{" "}
+        </Text>
+        <Text>
+          Última Actualización: <span>{LASTUPDATE}</span>{" "}
+        </Text>
+      </div>
+    </Container>
   );
 };
 

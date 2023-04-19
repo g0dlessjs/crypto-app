@@ -13,11 +13,7 @@ const TextError = styled.div`
 `;
 
 const Error = ({ children }) => {
-  return (
-    <TextError>
-        {children}
-    </TextError>
-  )
+  return <TextError>{children}</TextError>;
 };
 
 export default Error;
