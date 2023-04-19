@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import FormCrypto from "./components/Form";
+import Result from "./components/Result";
 import ImgCrypto from "./img/imagen-criptos.png";
 
 const Container = styled.div`
@@ -43,6 +44,7 @@ const Heading = styled.h1`
 
 function App() {
   const [coins, setCoins] = useState({});
+  const [result, setResult] = useState({});
 
   useEffect(() => {
     if (Object.keys(coins).length > 0) {
@@ -53,7 +55,7 @@ function App() {
         const response = await fetch(url);
         const result = await response.json();
 
-        console.log(result.DISPLAY[cryptocoin][coin]);
+        setResult(result.DISPLAY[cryptocoin][coin]);
       };
       quoteCrypto();
     }
@@ -65,6 +67,7 @@ function App() {
       <div>
         <Heading>Cotiza Criptomonedas al Instante</Heading>
         <FormCrypto setCoins={setCoins} />
+        {result.PRICE && <Result result={result} />}
       </div>
     </Container>
   );
